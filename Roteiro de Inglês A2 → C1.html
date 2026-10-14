@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roteiro de Inglês A2 → C1</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1d2330;--muted:#6b7280;--accent:#2563eb;--ok:#16a34a;--line:#e5e7eb;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1218;--card:#181c25;--ink:#e8ebf2;--muted:#9aa3b2;--accent:#60a5fa;--ok:#4ade80;--line:#2a303c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1218;--card:#181c25;--ink:#e8ebf2;--muted:#9aa3b2;--accent:#60a5fa;--ok:#4ade80;--line:#2a303c;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;padding-bottom:env(safe-area-inset-bottom,0px)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:16px 20px}
+header h1{margin:0 0 8px;font-size:1.25rem}
+.prog-row{display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--ok);transition:width .3s}
+#pct{font-weight:700;min-width:52px;text-align:right}
+.sub{font-size:.8rem;color:var(--muted);margin-top:4px}
+main{max-width:860px;margin:0 auto;padding:20px}
+.semana{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:22px}
+.semana h2{margin:0 0 4px;font-size:1.2rem;color:var(--accent)}
+.tema{font-size:1rem;margin:0 0 12px;font-weight:600}
+.gram{background:var(--bg);border-left:4px solid var(--accent);padding:10px 12px;border-radius:8px;margin:0 0 14px;font-size:.95rem}
+h3{font-size:.95rem;margin:16px 0 8px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px 12px}
+.vocab div{font-size:.88rem;border-bottom:1px dashed var(--line);padding:3px 0}
+.vocab b{font-weight:600}
+.vocab span{color:var(--muted)}
+ul{margin:0;padding-left:20px}
+li{margin:3px 0}
+details{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+summary{cursor:pointer;padding:10px 12px;font-weight:600;list-style:none;display:flex;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";color:var(--muted);transition:transform .2s}
+details[open] summary::before{transform:rotate(90deg)}
+.dia-nome{color:var(--accent);min-width:38px}
+.done-tag{margin-left:auto;font-size:.75rem;color:var(--ok);font-weight:600}
+.dia-body{padding:0 14px 12px 14px;font-size:.92rem}
+.dia-body p{margin:6px 0}
+.check{display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:600;cursor:pointer;user-select:none}
+.check input{width:18px;height:18px;accent-color:var(--ok)}
+footer{max-width:860px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>Roteiro de Inglês · A2 → C1</h1>
+  <div class="prog-row">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div id="pct">0%</div>
+  </div>
+  <div class="sub" id="contador">0 de 0 dias concluídos</div>
+</header>
+<main id="app"></main>
+<footer>Semanas 1 a 4 completas. As semanas 5 em diante (B1 e início de B2) serão adicionadas na próxima etapa. Foco: 30 minutos ativos por dia, com input compreensível e produção oral.</footer>
+
+<script>
+const SEMANAS = [
+{
+ n:1, tema:"Rotina diária", 
+ gram:"Present Simple para rotinas (I wake up at 6) × Present Continuous para o que acontece agora (I'm making coffee).",
+ rec:["English with Lucy: vídeos sobre rotina e pronúncia","BBC Learning English: 6 Minute English","Anki (cards com frases completas)","Cambridge Dictionary (com áudio)"],
+ cont:["Penguin Readers nível 2 (leia 1 capítulo por dia)","Podcast Easy English, episódios sobre rotina","Cenas curtas de Friends com legenda em inglês"],
+ vocab:"wake up=acordar|get up=levantar|brush my teeth=escovar os dentes|take a shower=tomar banho|get dressed=vestir-se|have breakfast=tomar café da manhã|make coffee=fazer café|commute=deslocamento|catch the bus=pegar o ônibus|drive to work=dirigir até o trabalho|arrive=chegar|start work=começar a trabalhar|take a break=fazer uma pausa|lunch=almoço|finish work=terminar o trabalho|go home=ir para casa|cook dinner=preparar o jantar|do the dishes=lavar a louça|do the laundry=lavar roupa|clean the house=limpar a casa|go shopping=ir às compras|pay the bills=pagar as contas|watch TV=assistir TV|relax=relaxar|go to bed=ir dormir|fall asleep=adormecer|get tired=ficar cansado|stay up late=ficar acordado até tarde|exercise=fazer exercício|go for a walk=dar uma caminhada|meet friends=encontrar amigos|take care of=cuidar de|pick up=buscar|drop off=deixar (alguém em algum lugar)|plan=planejar|schedule=agenda|deadline=prazo|appointment=compromisso|errand=tarefa rápida fora de casa|chore=tarefa doméstica|busy=ocupado|free time=tempo livre|usually=geralmente|always=sempre|never=nunca|sometimes=às vezes|often=frequentemente|every day=todo dia|on weekends=nos fins de semana|at the moment=no momento|right now=agora mesmo|early=cedo|late=tarde|on time=na hora|in a hurry=com pressa|ready=pronto|tired=cansado|hungry=com fome|sleepy=com sono|grocery store=mercado|bank=banco|post office=correios|pharmacy=farmácia|wait=esperar|hurry up=apresse-se|enough=suficiente|sure=com certeza|bored=entediado|relaxed=relaxado|a lot of=muito(s)|pretty much=praticamente|just=apenas|still=ainda|already=já|yet=ainda (em negativas)|anymore=mais (em negativas)",
+ dias:[
+  ["Seg","Present Simple para rotinas","English with Lucy: rotina diária",30,"Shadowing de 2 min (10). Anki com 10 frases de rotina (10). Narrar sua manhã em voz alta (10)."],
+  ["Ter","Vocabulário de casa e rotina","Cambridge Dictionary + Anki",30,"Escolha 15 palavras da lista e crie 1 frase real para cada (15). Revisão do Anki (10). Nomear objetos da casa em inglês (5)."],
+  ["Qua","Present Simple: he/she + -s","6 Minute English (hábitos)",30,"Shadowing do áudio (10). Escrever 5 frases sobre sua rotina e corrigir com IA (15). Revisão (5)."],
+  ["Qui","Advérbios de frequência (always, usually, never)","Penguin Readers nível 2",30,"Ler 2 capítulos (15). Anotar 3 frases com advérbios (10). Anki (5)."],
+  ["Sex","Present Continuous: I'm making coffee","Cena curta de Friends com legenda em inglês",30,"Assistir 5 min pausando (10). Narrar o que você faz agora (10). Anki (10)."],
+  ["Sáb","Simple × Continuous lado a lado","Podcast Easy English (A2)",30,"Escuta livre de 15 min (15). Anotar 5 palavras novas (10). Gravar 2 min sobre seu sábado (5)."],
+  ["Dom","Revisão da semana","Anki + sua gravação",30,"Refazer as frases erradas (15). Contar sua semana em 2 minutos, gravado (15)."]
+ ]
+},
+{
+ n:2, tema:"Trabalho: reuniões e e-mails",
+ gram:"Modal verbs para pedidos e sugestões: Could you...? / Would you...? / I'd recommend... / You should...",
+ rec:["BBC Learning English: Business English","Business English Pod (diálogos curtos)","Anki","Aula mensal de conversação (italki ou Preply)"],
+ cont:["Vídeos no YouTube com frases de reunião em inglês","Modelos de e-mail de trabalho (BBC Learning English)","The Office com legenda em inglês (cenas de reunião)"],
+ vocab:"meeting=reunião|agenda=pauta|minutes=ata da reunião|colleague=colega|manager=gerente|team=equipe|project=projeto|update=atualização|report=relatório|presentation=apresentação|feedback=retorno|approve=aprovar|review=revisar|schedule=agendar|reschedule=reagendar|postpone=adiar|cancel=cancelar|confirm=confirmar|follow up=dar seguimento|attach=anexar|forward=encaminhar|reply=responder|send=enviar|draft=rascunho|proposal=proposta|budget=orçamento|client=cliente|sales=vendas|goal=meta|target=alvo|progress=progresso|priority=prioridade|task=tarefa|assign=atribuir|responsible=responsável|issue=problema|solution=solução|challenge=desafio|improve=melhorar|increase=aumentar|decrease=diminuir|success=sucesso|result=resultado|data=dados|analysis=análise|chart=gráfico|spreadsheet=planilha|workload=carga de trabalho|deadline=prazo|deliver=entregar|training=treinamento|department=departamento|office=escritório|remote=remoto|hybrid=híbrido|available=disponível|unavailable=indisponível|I'll get back to you=retorno para você depois|Could you clarify?=Poderia esclarecer?|Let's move on=Vamos seguir em frente|Any questions?=Alguma dúvida?|That makes sense=Faz sentido|I agree=Concordo|I disagree=Discordo|Sounds good=Parece bom|Let me check=Deixe-me verificar|Can I add something?=Posso acrescentar algo?|Are you free...?=Você está livre...?|Would you mind...?=Você se importaria de...?|Thanks for your patience=Obrigado pela paciência|Just to confirm=Só para confirmar|As discussed=Como discutido|Please find attached=Segue em anexo|Looking forward to hearing from you=Fico no aguardo|Kind regards=Atenciosamente|I wanted to follow up=Queria dar seguimento|Let's schedule a call=Vamos marcar uma call|Stay on track=Manter o foco|Next steps=Próximos passos|Action items=Itens de ação",
+ dias:[
+  ["Seg","Vocabulário de reunião: agenda, update, deadline","BBC Learning English: Business English",30,"Shadowing de um trecho (10). Anki com 10 frases de reunião (10). Escrever 3 frases de update do seu trabalho (10)."],
+  ["Ter","Could you...? / Would you...?","Lista de frases-chave de reunião",30,"Roleplay: pedir algo a um colega, em voz alta (15). Anki (10). Corrigir as frases com IA (5)."],
+  ["Qua","Should e I'd recommend","6 Minute English (business)",30,"Escutar e fazer shadowing (10). Dar 3 sugestões em voz alta sobre um projeto real (10). Anki (10)."],
+  ["Qui","Vocabulário de e-mail: attach, follow up, confirm","Modelos de e-mail da BBC Learning English",30,"Escrever um e-mail de 4 linhas (15). Corrigir com IA e refazer as partes corrigidas (10). Anki (5)."],
+  ["Sex","Discordar com educação: I see your point, but...","Business English Pod",30,"Chorusing do diálogo (10). Roleplay de desacordo sobre um prazo (15). Anki (5)."],
+  ["Sáb","Revisão de frases de reunião","The Office com legenda em inglês",30,"Assistir 10 min pausando (15). Responder em voz alta pelos personagens (10). Anotar 3 lacunas (5)."],
+  ["Dom","Revisão da semana","Anki + sua gravação",30,"Refazer erros (15). Gravar 2 min explicando um projeto seu (15)."]
+ ]
+},
+{
+ n:3, tema:"Igreja: oração, visitantes e avisos",
+ gram:"Past Simple para testemunhos e relatos (God helped me yesterday / I prayed last week), com verbos regulares e irregulares.",
+ rec:["YouVersion: Bíblia em inglês com áudio","Our Daily Bread (devocional em áudio)","Anki","Tutor para roleplay de visitantes"],
+ cont:["Sermões em inglês no YouTube (trechos de 5 min)","Hinos em inglês com letra","Penguin Readers nível 2 (histórias simples)"],
+ vocab:"church=igreja|congregation=congregação|pastor=pastor|sermon=sermão|worship=louvor|prayer=oração|pray=orar|praise=louvar|hymn=hino|choir=coral|band=banda|Bible=Bíblia|verse=versículo|chapter=capítulo|passage=trecho|faith=fé|hope=esperança|grace=graça|blessing=bênção|bless=abençoar|forgive=perdoar|forgiveness=perdão|sin=pecado|salvation=salvação|testimony=testemunho|baptism=batismo|community=comunidade|volunteer=voluntário|serve=servir|ministry=ministério|small group=grupo pequeno|youth group=grupo de jovens|offering=oferta|donation=doação|announcement=aviso|event=evento|welcome=boas-vindas|visitor=visitante|newcomer=recém-chegado|greet=cumprimentar|invite=convidar|join us=junte-se a nós|grateful=agradecido|encourage=encorajar|support=apoiar|kneel=ajoelhar|stand up=levantar-se|sit down=sentar-se|sing along=cantar junto|lead=liderar|teach=ensinar|lesson=lição|wisdom=sabedoria|strength=força|peace=paz|joy=alegria|healing=cura|trust=confiar|faithful=fiel|holy=santo|eternal=eterno|miracle=milagre|Would you like to join us?=Você gostaria de se juntar a nós?|I'll pray for you=Vou orar por você|How can I help?=Como posso ajudar?|Is this your first time here?=É a sua primeira vez aqui?|Can I pray for you?=Posso orar por você?|God answered my prayer=Deus respondeu minha oração|God helped me=Deus me ajudou|I felt peace=Senti paz|Sunday service=culto de domingo|Wednesday night=culto de quarta|Thank you for coming=Obrigado por vir|Please take a seat=Por favor, sente-se|Let's bow our heads=Vamos baixar a cabeça|Amen=Amém|Hallelujah=Aleluia|God bless you=Deus te abençoe|Make yourself at home=Fique à vontade|Let me introduce you=Deixe-me te apresentar|Nice to meet you=Prazer em conhecer|We're glad you're here=Ficamos felizes que você está aqui|Read aloud=Ler em voz alta|Memorize=Memorizar|Thank God for=Agradecer a Deus por|Trust in God=Confiar em Deus|Pray together=Orar juntos|Share your story=Compartilhe sua história",
+ dias:[
+  ["Seg","Vocabulário bíblico e de culto","YouVersion: versículo do dia em áudio",30,"Ouvir e repetir o versículo junto (10). Anki (10). Escrever a frase principal em inglês (10)."],
+  ["Ter","Past Simple: God helped me yesterday","Our Daily Bread (áudio curto)",30,"Shadowing (10). Contar em 5 frases algo que Deus fez por você esta semana (15). Revisão (5)."],
+  ["Qua","Verbos irregulares do testemunho","Trecho de sermão em inglês (5 min)",30,"Assistir pausando e reconstruir as frases ditas (15). Anki (15)."],
+  ["Qui","Receber visitantes","Frases-chave da seção Igreja",30,"Roleplay: Is this your first time here? (15). Anki (10). Corrigir com IA (5)."],
+  ["Sex","Pedir e oferecer oração","Hino com letra",30,"Cantar junto (10). Roleplay: Can I pray for you? (10). Anki (10)."],
+  ["Sáb","Avisos e convites","Penguin Readers nível 2",30,"Ler 1 capítulo (15). Gravar um aviso de culto de 1 minuto (15)."],
+  ["Dom","Revisão da semana","Anki + sua gravação",30,"Refazer erros (15). Gravar um testemunho curto de 2 minutos (15)."]
+ ]
+},
+{
+ n:4, tema:"Apresentações e opiniões",
+ gram:"Present Perfect para experiências e tempo de trabalho (I've worked here for five years / Have you ever...?) e conectores (however, therefore, moreover).",
+ rec:["TED com legenda em inglês (talks de 5 a 8 min)","BBC Learning English: Business English","Anki","Tutor para ensaio de apresentação (1 aula)"],
+ cont:["Vídeos no YouTube sobre apresentações em inglês (busque \"English presentation skills\")","Business English Pod (debates)","Talks TED sobre trabalho e liderança"],
+ vocab:"present=apresentar|presenter=apresentador|audience=público|slide=slide|introduction=introdução|conclusion=conclusão|main point=ponto principal|example=exemplo|for instance=por exemplo|in other words=em outras palavras|as a result=como resultado|therefore=portanto|however=no entanto|although=embora|moreover=além disso|in addition=além disso|first of all=antes de tudo|finally=finalmente|to sum up=resumindo|advantage=vantagem|drawback=desvantagem|benefit=benefício|risk=risco|opportunity=oportunidade|threat=ameaça|trend=tendência|growth=crescimento|experience=experiência|skill=habilidade|career=carreira|achievement=conquista|improvement=melhora|mistake=erro|lesson learned=lição aprendida|achieve=alcançar|expand=expandir|launch=lançar|reduce=reduzir|avoid=evitar|prevent=prevenir|confident=confiante|nervous=nervoso|clear=claro|detailed=detalhado|relevant=relevante|significant=significativo|essential=essencial|calculate=calcular|estimate=estimar|compare=comparar|conclude=concluir|recommend=recomendar|suggest=sugerir|propose=propor|I believe=Eu acredito|In my opinion=Na minha opinião|I think=Eu acho|I suppose=Suponho|I'm not sure=Não tenho certeza|I see your point=Entendo seu ponto|On the other hand=Por outro lado|That's a good point=Esse é um bom ponto|Could you repeat that?=Pode repetir?|I've worked here for...=Trabalho aqui há...|I've been to...=Já fui a...|Have you ever...?=Você já...?|I've never...=Eu nunca...|Let me give you an example=Deixe-me dar um exemplo|Let's look at the data=Vamos ver os dados|Thank you for listening=Obrigado por ouvir|Any questions so far?=Alguma dúvida até aqui?|Let's move on to=Vamos passar para|As you can see=Como vocês podem ver|Let me explain=Deixe-me explicar|Take your time=Sem pressa|Next slide=Próximo slide|Key takeaway=Principal aprendizado|Bottom line=Em resumo",
+ dias:[
+  ["Seg","Conectores: however, moreover, therefore","TED curta com legenda em inglês",30,"Assistir pausando (10). Identificar 5 conectores e anotar a função de cada um (10). Anki (10)."],
+  ["Ter","Present Perfect: I've worked here for five years","Lista de frases de experiência",30,"Escrever 5 frases sobre sua trajetória (15). Corrigir com IA (10). Anki (5)."],
+  ["Qua","Opinião: I think / In my opinion","Business English Pod (debate)",30,"Shadowing (10). Dar 3 opiniões em voz alta sobre um tema de trabalho (10). Anki (10)."],
+  ["Qui","Estrutura: introdução, pontos, conclusão","TED de outro tema",30,"Resumir a talk em 4 frases em voz alta (15). Anki (15)."],
+  ["Sex","Ensaio de apresentação de 1 minuto","Seu próprio roteiro",30,"Gravar 1 minuto (15). Ouvir e anotar 3 erros (10). Anki (5)."],
+  ["Sáb","Perguntas e respostas: Could you repeat that?","Roleplay com IA ou tutor",30,"Simular Q&A de 10 minutos (20). Anotar as lacunas e pesquisar como dizer (10)."],
+  ["Dom","Revisão do mês","Anki + sua gravação",30,"Contar seu mês em voz alta, 3 minutos (15). Refazer erros (15)."]
+ ]
+}
+];
+
+const KEY = "roteiro_ingles_checks_v1";
+let checks = {};
+try { checks = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { checks = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(checks)); } catch (e) {} }
+
+const app = document.getElementById("app");
+const totalDias = SEMANAS.reduce((s,w)=>s+w.dias.length,0);
+
+SEMANAS.forEach((w, wi) => {
+  const sec = document.createElement("section");
+  sec.className = "semana";
+  const vocabItems = w.vocab.split("|").map(p => {
+    const i = p.indexOf("=");
+    return `<div><b>${p.slice(0,i)}</b> <span>${p.slice(i+1)}</span></div>`;
+  }).join("");
+  const vocabCount = w.vocab.split("|").length;
+  sec.innerHTML = `
+    <h2>Semana ${w.n}</h2>
+    <p class="tema">${w.tema}</p>
+    <p class="gram"><b>Gramática:</b> ${w.gram}</p>
+    <h3>Vocabulário (${vocabCount})</h3>
+    <div class="vocab">${vocabItems}</div>
+    <h3>Recursos recomendados</h3>
+    <ul>${w.rec.map(r=>`<li>${r}</li>`).join("")}</ul>
+    <h3>Conteúdos</h3>
+    <ul>${w.cont.map(c=>`<li>${c}</li>`).join("")}</ul>
+    <h3>Atividades diárias</h3>
+    <div class="dias"></div>`;
+  const box = sec.querySelector(".dias");
+  w.dias.forEach((d, di) => {
+    const id = `w${wi}d${di}`;
+    const det = document.createElement("details");
+    det.innerHTML = `
+      <summary><span class="dia-nome">${d[0]}</span> <span>${d[1]}</span><span class="done-tag"></span></summary>
+      <div class="dia-body">
+        <p><b>O que estudar:</b> ${d[1]}</p>
+        <p><b>Recurso:</b> ${d[2]}</p>
+        <p><b>Tempo:</b> ${d[3]} minutos</p>
+        <p><b>Atividade:</b> ${d[4]}</p>
+        <label class="check"><input type="checkbox" ${checks[id]?"checked":""}> Dia concluído</label>
+      </div>`;
+    const cb = det.querySelector("input");
+    const tag = det.querySelector(".done-tag");
+    const sync = () => { tag.textContent = cb.checked ? "✓ concluído" : ""; };
+    sync();
+    cb.addEventListener("change", () => {
+      checks[id] = cb.checked; save(); sync(); updateProgress();
+    });
+    box.appendChild(det);
+  });
+  app.appendChild(sec);
+});
+
+function updateProgress(){
+  const feitos = Object.values(checks).filter(Boolean).length;
+  const pct = Math.round((feitos / totalDias) * 100);
+  document.getElementById("fill").style.width = pct + "%";
+  document.getElementById("pct").textContent = pct + "%";
+  document.getElementById("contador").textContent = `${feitos} de ${totalDias} dias concluídos`;
+}
+updateProgress();
+</script>
+</body>
+</html>
